@@ -1,9 +1,13 @@
 import React from 'react'
 
-const navbar = () => {
-  return (
-    <div>navbar</div>
-  )
+const Navbar = () => {
+    return (
+        <nav>
+            <div>
+                <img src='/images/logo.svg' alt='logo'/>
+            </div>
+        </nav>
+    )
 }
 
-export default navbar
+export default Navbar
