@@ -54,7 +54,7 @@ const Welcome = () => {
     useGSAP(() => {
         setupTextHover(titleRef.current, "title")
         setupTextHover(subtitleRef.current, "subtitle")
-    }, [])
+    }, []);
 
     return (
         <section id='welcome'>
