@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { useRef } from 'react'
 
 const FONT_WEIGHTS = {
-    subtitles: { min: 100, max: 400, default: 100 },
+    subtitle: { min: 100, max: 400, default: 100 },
     title: { min: 400, max: 900, default: 400 }
 }
 
@@ -32,7 +32,7 @@ const setupTextHover = (container, type) => {
     };
 
     const handleMouseMove = (e) => {
-        const { left } = container.getBoundingClientRec();
+        const { left } = container.getBoundingClientRect();
         const mouseX = e.clientX - left;
 
         letters.forEach((letter) => {
@@ -43,7 +43,17 @@ const setupTextHover = (container, type) => {
         })
     }
 
+    const handleMouseLeave = () => {
+        letters.forEach((letter) => animateLetter(letter, base, 0.3))
+    }
+
     container.addEventListener("mousemove", handleMouseMove);
+    container.addEventListener("mouseleave", handleMouseLeave);
+    
+    return () => {
+        container.removeEventListener("mousemove", handleMouseMove);
+        container.removeEventListener("mouseleave", handleMouseLeave);
+    }
 }
 
 const Welcome = () => {
@@ -52,8 +62,12 @@ const Welcome = () => {
     const subtitleRef = useRef(null)
 
     useGSAP(() => {
-        setupTextHover(titleRef.current, "title")
-        setupTextHover(subtitleRef.current, "subtitle")
+        const titleCleanup = setupTextHover(titleRef.current, "title")
+        const subtitleCleanup = setupTextHover(subtitleRef.current, "subtitle")
+        return () => {
+            titleCleanup()
+            subtitleCleanup()
+        }
     }, []);
 
     return (
