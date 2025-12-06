@@ -24,7 +24,8 @@ const Navbar = () => {
                     ))}
                 </ul>
                 <time>
-                    {new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true, year: 'numeric', month: '2-digit', day: '2-digit' })
+                    {new Intl
+                        .DateTimeFormat('en-US', { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true, year: 'numeric', month: '2-digit', day: '2-digit' })
                         .format(new Date())}
                 </time>
             </div>
