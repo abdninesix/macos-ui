@@ -2,12 +2,20 @@ import React from 'react'
 import { useRef } from 'react'
 import { dockApps } from '../constants/data'
 import { Tooltip } from 'react-tooltip';
+import { useGSAP } from '@gsap/react';
 
 const Dock = () => {
 
     const dockRef = useRef(null);
 
-    const toggleApp = (app) = {};
+    useGSAP(() => {
+        const dock = dockRef.current;
+        if (!dock) return;
+        const icons = dock.querySelectorAll('.dock-icon');
+    })
+
+    const toggleApp = (app) => { };
+
     return (
         <section id='dock'>
             <div ref={dockRef} className='dock-container'>
@@ -23,11 +31,11 @@ const Dock = () => {
                             disabled={!canOpen}
                             onClick={() => toggleApp({ id, canOpen })}
                         >
-                            <img src={`images/${icon}`} alt={name} loading='lazy' className={canOpen ? "" : "opacity-60"} />
+                            <img src={`/images/${icon}`} alt={name} loading='lazy' className={canOpen ? "" : "opacity-60"} />
                         </button>
                     </div>
                 ))}
-                <Tooltip id="dock-tooltip" />
+                <Tooltip id="dock-tooltip" place='top' className='tooltip' />
             </div>
         </section>
     )
