@@ -12,6 +12,15 @@ const Dock = () => {
         const dock = dockRef.current;
         if (!dock) return;
         const icons = dock.querySelectorAll('.dock-icon');
+        const animateIcons = (mouseX) => {
+            const { left } = dock.getBoundingClientRect();
+            icons.forEach((icon) => {
+                const { left: iconLeft, width } = icon.getBoundingClientRect();
+                const center = iconLeft - left + width / 2;
+                const distance = Math.abs(mouseX - center);
+                const intensity = Math.exp(-(distance ** 2) / 1000)
+            })
+        }
     })
 
     const toggleApp = (app) => { };
