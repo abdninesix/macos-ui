@@ -9,9 +9,11 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex } = windows[windowKey]
         const ref = useRef(null)
 
-        return <section id={windowKey} ref={ref} style={{ zIndex }} className='absolute'>
-            <Component {...props} />
-        </section>
+        return (
+            <section id={windowKey} ref={ref} style={{ zIndex }} className='absolute'>
+                <Component {...props} />
+            </section>
+        )
     };
 
     Wrapped.displayName = `WindowWrapper(${Component.displayName || Component.name || "Component"}`
