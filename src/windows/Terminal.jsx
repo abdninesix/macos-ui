@@ -2,6 +2,7 @@ import React from 'react'
 import WindowWrapper from '../hoc/WindowWrapper';
 import { techStack } from '../constants/data';
 import { Check } from 'lucide-react';
+import { Flag } from 'lucide-react';
 
 const Terminal = () => {
     return (
@@ -29,12 +30,17 @@ const Terminal = () => {
                             <h3>{category}</h3>
                             <ul>
                                 {items.map((item, i) => (
-                                    <li key={i}>{item} {i < items.length-1 ? "," : ""}</li>
+                                    <li key={i}>{item} {i < items.length - 1 ? "," : ""}</li>
                                 ))}
                             </ul>
                         </li>
                     ))}
                 </ul>
+
+                <div className='footnote'>
+                    <p><Check size={20} /> {techStack.length} of {techStack.length} stacks loaded successfully.</p>
+                    <p className='text-black'><Flag size={15} fill='black' /> Render time. 6ms</p>
+                </div>
             </div>
         </>
     )
