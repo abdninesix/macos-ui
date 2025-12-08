@@ -19,7 +19,7 @@ const Navbar = () => {
                 <ul>
                     {navIcons.map((icon) => (
                         <li key={icon.id}>
-                            <img src={icon.img} alt={`icon-${icon.id}`} className="hover:opacity-80 cursor-pointer" />
+                            <img src={icon.img} alt={`icon-${icon.id}`} className="icon" />
                         </li>
                     ))}
                 </ul>

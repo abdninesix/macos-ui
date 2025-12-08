@@ -7,7 +7,7 @@ body {
   width: 100dvw;
   overflow: hidden;
   height: 100dvh;
-  background-image: url("/images/wallpaper.png");
+  background-image: url("/images/wallpaper3.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -63,7 +63,7 @@ body {
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+    @apply p-1 hover:bg-gray-200 rounded hover:cursor-pointer;
   }
 
   #welcome {
