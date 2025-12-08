@@ -4,9 +4,11 @@ import { dockApps } from '../constants/data'
 import { Tooltip } from 'react-tooltip';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import useWindowStore from '../store/window';
 
 const Dock = () => {
 
+    const { openWindow, closeWindow, focusWindow } = useWindowStore();
     const dockRef = useRef(null);
 
     useGSAP(() => {
