@@ -2,14 +2,16 @@ import React from 'react'
 import useWindowStore from '../store/window';
 import { useRef } from 'react';
 
-const WindowWrapper = (component, windowKey) => {
+const WindowWrapper = (Component, windowKey) => {
 
     const Wrapped = (props) => {
         const { focusWindow, windows } = useWindowStore();
         const { isOpen, zIndex } = windows[windowKey]
         const ref = useRef(null)
 
-        return <section>Hi</section>
+        return <section id={windowKey} ref={ref} style={{ zIndex }} className='absolute'>
+            <Component {...props} />
+        </section>
     }
 
     return (
