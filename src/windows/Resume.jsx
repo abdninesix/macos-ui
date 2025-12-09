@@ -1,14 +1,15 @@
 import React from 'react'
 import WindowsControls from '../components/WindowsControls'
 import WindowWrapper from '../hoc/WindowWrapper'
+import { Download } from 'lucide-react'
 
 const Resume = () => {
     return (
         <>
-            <div className='window-header'>
+            <div id='window-header'>
                 <WindowsControls target='resume' />
                 <h2>Resume.pdf</h2>
-                <a href="files/resume.pdf"></a>
+                <a href="files/resume.pdf" download title='Download Resume'><Download className='icon' /></a>
             </div>
         </>
     )
