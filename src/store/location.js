@@ -1,9 +1,10 @@
-import React from 'react'
+import { create } from "zustand";
 
-const location = () => {
-  return (
-    <div>location</div>
-  )
-}
+const DEFAULT_LOCATION = locations.work;
 
-export default location
+const useLocationStore = create(
+    immer((set) => ({
+        activeLocation: DEFAULT_LOCATION,
+        setActiveLocation: (location = null)
+    }))
+)
