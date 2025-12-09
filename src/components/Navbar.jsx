@@ -1,15 +1,18 @@
 import { navIcons, navLinks } from "../constants/data"
+import useWindowStore from "../store/window"
 
 const Navbar = () => {
+
+    const { openWindow } = useWindowStore();
     return (
         <nav>
             <div>
                 <img src='/images/logo.svg' alt='logo' />
                 <p className='font-bold'>macFolio</p>
                 <ul>
-                    {navLinks.map((link) => (
-                        <li key={link.id}>
-                            <p>{link.name}</p>
+                    {navLinks.map(({ id, name, type }) => (
+                        <li key={id} onClick={() => openWindow(type)}>
+                            <p>{name}</p>
                         </li>
                     ))}
                 </ul>
