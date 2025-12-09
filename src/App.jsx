@@ -5,6 +5,7 @@ import Dock from './components/Dock'
 import { Draggable } from 'gsap/Draggable'
 import gsap from 'gsap'
 import Terminal from './windows/Terminal'
+import Safari from './windows/Safari'
 
 gsap.registerPlugin(Draggable);
 
@@ -16,6 +17,7 @@ const App = () => {
       <Dock />
       {/* Windows */}
       <Terminal />
+      <Safari />
     </main>
   )
 }
