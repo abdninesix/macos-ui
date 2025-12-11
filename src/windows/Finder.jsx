@@ -1,12 +1,14 @@
 import React from 'react'
 import WindowsControls from '../components/WindowsControls'
 import WindowWrapper from '../hoc/WindowWrapper'
+import { Search } from 'lucide-react'
 
 const Finder = () => {
     return (
         <>
-            <div className='content-header'>
+            <div className='window-header'>
                 <WindowsControls target='finder' />
+                <Search className="icon" />
             </div>
         </>
     )
