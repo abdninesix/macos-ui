@@ -6,9 +6,18 @@ import { Search } from 'lucide-react'
 const Finder = () => {
     return (
         <>
-            <div className='window-header'>
+            <div id='window-header'>
                 <WindowsControls target='finder' />
                 <Search className="icon" />
+            </div>
+
+            <div className='bg-white flex h-full'>
+                <div className='sidebar'>
+                    <div>
+                        <h3>Favorites</h3>
+                        <ul>...</ul>
+                    </div>
+                </div>
             </div>
         </>
     )
