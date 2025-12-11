@@ -22,7 +22,7 @@ const Finder = () => {
                         <ul>
                             {Object.values(locations).map((item) => (
                                 <li key={item.id} onClick={() => setActiveLocation(item)}>
-                                    <img src={item.icon} alt={item.name} className='w-4' />
+                                    <img src={item.icon} alt={item.name} className={`w-4 ${item.id === activeLocation.id ? "active" : "not-active"}`} />
                                     <p className='text-sm font-medium truncate'>{item.name}</p>
                                 </li>
                             ))}
