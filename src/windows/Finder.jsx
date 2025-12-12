@@ -3,6 +3,7 @@ import WindowsControls from '../components/WindowsControls'
 import WindowWrapper from '../hoc/WindowWrapper'
 import { Search } from 'lucide-react'
 import useLocationStore from '../store/location'
+import { locations } from '../constants/data'
 
 const Finder = () => {
 
