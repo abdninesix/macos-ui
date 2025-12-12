@@ -30,12 +30,8 @@ const Finder = () => {
 
             <div className='bg-white flex h-full'>
                 <div className='sidebar'>
-                    <div>
-                        <ul> {renderList("Favorites", Object.values(locations))}</ul>
-                    </div>
-                    <div>
-                        <ul>{renderList("Work", locations.work.children)}</ul>
-                    </div>
+                    <ul> {renderList("Favorites", Object.values(locations))}</ul>
+                    <ul>{renderList("Work", locations.work.children)}</ul>
                 </div>
             </div>
         </>
