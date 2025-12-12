@@ -13,40 +13,57 @@ const WindowWrapper = (Component, windowKey) => {
         const { isOpen, zIndex } = windows[windowKey]
         const ref = useRef(null)
 
-        useGSAP(() => {
-            const el = ref.current;
-            if (!el || !isOpen) return;
-            el.style.display = 'block';
-
-            gsap.fromTo(el,
-                {
-                    scale: 0.8,
-                    opacity: 0,
-                    y: 40,
-                },
-                {
-                    scale: 1,
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.2,
-                    ease: "power3.out",
-                }
-            )
-        }, [isOpen]);
+        const animation = React.useRef(null)
 
         useGSAP(() => {
             const el = ref.current;
             if (!el) return;
+            if (isOpen) {
+                el.style.display = 'block';
+                animation.current = gsap.fromTo(el,
+                    {
+                        scale: 0.8,
+                        opacity: 0,
+                        y: 40,
+                    },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.25,
+                        ease: "power3.out",
+                    }
+                )
+            } else {
+                animation.current = gsap.to(el,
+                    {
+                        scale: 0.8,
+                        opacity: 0,
+                        y: 40,
+                        duration: 0.25,
+                        ease: "power3.in",
+                        onComplete: () => {
+                            el.style.display = 'none';
+                        }
+                    }
+                )
+            }
+        }, [isOpen]);
 
+        useLayoutEffect(() => {
+            return () => {
+                if (animation.current) {
+                    animation.current.kill()
+                }
+            }
+        }, [])
+
+        useGSAP(() => {
+            const el = ref.current;
+            if (!el) return;
             const [instance] = Draggable.create(el, { onPress: () => focusWindow(windowKey) })
             return () => instance.kill()
         }, []);
-
-        useLayoutEffect(() => {
-            const el = ref.current;
-            if (!el) return;
-            el.style.display = isOpen ? "block" : "none"
-        }, [isOpen])
 
         return (
             <section id={windowKey} ref={ref} style={{ zIndex }} className='absolute'>
