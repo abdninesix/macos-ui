@@ -4,12 +4,16 @@ import WindowWrapper from '../hoc/WindowWrapper'
 import { Search } from 'lucide-react'
 import useLocationStore from '../store/location'
 import { locations } from '../constants/data'
+import useWindowStore from '../store/window'
 
 const Finder = () => {
 
+    const { openWindow } = useWindowStore()
     const { activeLocation, setActiveLocation } = useLocationStore()
 
-    const openItem = () => { }
+    const openItem = () => {
+        if (item.fileType === "pdf") return openWindow("resume")
+    }
 
     const renderList = (name, items) => (
         <div>
@@ -35,13 +39,15 @@ const Finder = () => {
                     <ul> {renderList("Favorites", Object.values(locations))}</ul>
                     <ul>{renderList("Work", locations.work.children)}</ul>
                 </div>
+                <ul className='content'>
+                    {activeLocation?.children.map((item) => (
+                        <li key={item.id} className={item.position} onClick={() => openItem(item)}>
+                            <img src={item.icon} alt={item.name} />
+                            <p>{item.name}</p>
+                        </li>
+                    ))}
+                </ul>
             </div>
-
-            <ul className='content'>
-                {activeLocation?.children.map((item) => (
-                    <li key={item.id} className={item.position} onClick={() => openItem(item)}></li>
-                ))}
-            </ul>
         </>
     )
 }
