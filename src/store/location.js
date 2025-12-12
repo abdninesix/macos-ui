@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { locations } from "../constants/data";
+import { immer } from "zustand/middleware/immer";
 
 const DEFAULT_LOCATION = locations.work;
 
