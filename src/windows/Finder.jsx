@@ -9,6 +9,8 @@ const Finder = () => {
 
     const { activeLocation, setActiveLocation } = useLocationStore()
 
+    const openItem = () => { }
+
     const renderList = (name, items) => (
         <div>
             <h3>{name}</h3>
@@ -34,6 +36,12 @@ const Finder = () => {
                     <ul>{renderList("Work", locations.work.children)}</ul>
                 </div>
             </div>
+
+            <ul className='content'>
+                {activeLocation?.children.map((item) => (
+                    <li key={item.id} className={item.position} onClick={() => openItem(item)}></li>
+                ))}
+            </ul>
         </>
     )
 }
