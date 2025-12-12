@@ -9,6 +9,13 @@ const Finder = () => {
 
     const { activeLocation, setActiveLocation } = useLocationStore()
 
+    const renderList = (item) => items.map((item) => (
+        <li key={item.id} onClick={() => setActiveLocation(item)} className={item.id === activeLocation.id ? "active" : "not-active"}>
+            <img src={item.icon} alt={item.name} className="w-4" />
+            <p className='text-sm font-medium truncate'>{item.name}</p>
+        </li>
+    ))
+
     return (
         <>
             <div id='window-header'>
@@ -20,18 +27,11 @@ const Finder = () => {
                 <div className='sidebar'>
                     <div>
                         <h3>Favorites</h3>
-                        <ul>
-                            {Object.values(locations).map((item) => (
-                                <li key={item.id} onClick={() => setActiveLocation(item)} className={item.id === activeLocation.id ? "active" : "not-active"}>
-                                    <img src={item.icon} alt={item.name} className="w-4" />
-                                    <p className='text-sm font-medium truncate'>{item.name}</p>
-                                </li>
-                            ))}
-                        </ul>
+                        <ul> {renderList(Object.values(locations))}</ul>
                     </div>
                     <div>
                         <h3>Work</h3>
-                        <ul>...</ul>
+                        <ul>{renderList(locations.work.children)}</ul>
                     </div>
                 </div>
             </div>
