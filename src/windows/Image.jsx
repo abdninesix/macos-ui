@@ -10,7 +10,7 @@ const Image = () => {
 
     if (!data) return null
 
-    const { name, image, subtitle, description } = data;
+    const { name, imageUrl } = data;
 
     return (
         <>
@@ -19,15 +19,9 @@ const Image = () => {
                 <h2>{name}</h2>
             </div>
 
-            <div className='p-5 space-y-6 bg-white'>
-                {image ? (
-                    <img src={image} alt={name} className='-w-full h-auto rounded' />
-                ) : null}
-                {subtitle ? <h3 className='text-lg font-semibold'>{subtitle}</h3> : null}
-                {Array.isArray(description) && description.length > 0 ? (
-                    <div className='space-y-3 leading-relaxed text-base text-gray-800'>
-                        {description.map((para, i) => (<p key={i}>{para}</p>))}
-                    </div>
+            <div className='p-5 bg-white'>
+                {imageUrl ? (
+                    <img src={imageUrl} alt={name} className='-w-full h-auto max-h-[70vh] object-contain rounded' />
                 ) : null}
             </div>
         </>
