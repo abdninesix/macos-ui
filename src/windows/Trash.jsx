@@ -11,9 +11,7 @@ const Trash = () => {
                 <h2>Trash</h2>
             </div>
 
-            <div className='p-5 space-y-5'>
-                Fuck me
-            </div>
+            <p>Hi</p>
         </>
     )
 }
