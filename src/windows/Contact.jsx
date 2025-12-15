@@ -17,8 +17,14 @@ const Contact = () => {
                 <h3>Let&apos;s connect</h3>
                 <p>Got an idea? A bug to squash? Or just wanna talk tech? I&apos;m in.</p>
                 <ul>
-                    {socials.map((social)=>(
-                        <li>{social.bg}</li>
+                    {socials.map((id, bg, link, icon, text) => (
+                        <li key={id} style={{ backgroundColor: bg }}>
+                            <a href={link} target='_blank' rel='noopener noreferrer'>
+                                <img src={icon} alt="social" className='size-5' />
+                                <p>{text}</p>
+                            </a>
+
+                        </li>
                     ))}
                 </ul>
             </div>
