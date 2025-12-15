@@ -1,7 +1,6 @@
 import React from 'react'
 import WindowsControls from '../components/WindowsControls'
 import WindowWrapper from '../hoc/WindowWrapper'
-import { socials } from '../constants/data'
 
 const Trash = () => {
 
