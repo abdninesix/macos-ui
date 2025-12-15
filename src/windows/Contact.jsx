@@ -1,6 +1,7 @@
 import React from 'react'
 import WindowsControls from '../components/WindowsControls'
 import WindowWrapper from '../hoc/WindowWrapper'
+import { socials } from '../constants/data'
 
 const Contact = () => {
 
@@ -8,6 +9,18 @@ const Contact = () => {
         <>
             <div id='window-header'>
                 <WindowsControls target='contact' />
+                <h2>Contact</h2>
+            </div>
+
+            <div className='p-5 space-y-5'>
+                <img src="/images/adrian.jpg" alt="someone" className='w-20 rounded-full' />
+                <h3>Let&apos;s connect</h3>
+                <p>Got an idea? A bug to squash? Or just wanna talk tech? I&apos;m in.</p>
+                <ul>
+                    {socials.map((social)=>(
+                        <li>{social.bg}</li>
+                    ))}
+                </ul>
             </div>
         </>
     )
