@@ -5,8 +5,6 @@ import { socials } from '../constants/data'
 
 const Contact = () => {
 
-    console.log(socials)
-
     return (
         <>
             <div id='window-header'>

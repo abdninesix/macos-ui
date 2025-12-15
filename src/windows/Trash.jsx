@@ -1,9 +1,24 @@
 import React from 'react'
+import WindowsControls from '../components/WindowsControls'
+import WindowWrapper from '../hoc/WindowWrapper'
+import { socials } from '../constants/data'
 
 const Trash = () => {
-  return (
-    <div>Trash</div>
-  )
+
+    return (
+        <>
+            <div id='window-header'>
+                <WindowsControls target='trash' />
+                <h2>Trash</h2>
+            </div>
+
+            <div className='p-5 space-y-5'>
+                Fuck me
+            </div>
+        </>
+    )
 }
 
-export default Trash
+const TrashWindow = WindowWrapper(Trash, 'trash')  //This Higher-Order-Compononent takes Terminal and returns a modified version of it
+
+export default TrashWindow;
