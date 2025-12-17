@@ -30,8 +30,24 @@ const Photos = () => {
                         </li>
                     ))}</ul>
                 </div>
-                <div className='gallery'></div>
-            </div>
+                <div className='gallery'>
+                    {gallery.map(({ id, img }) => (
+                        <li
+                            key={id}
+                            onClick={() =>
+                                openWindow("imgfile", {
+                                    id,
+                                    name: "Gallery image",
+                                    icon: "/images/image.png",
+                                    kind: "file",
+                                    fileType: "img",
+                                    imageUrl: img,
+                                })}>
+                            <img src={img} alt={`Gallery app ${id}`} />
+                        </li>
+                    ))}
+                </div>
+            </div >
         </>
     )
 }
