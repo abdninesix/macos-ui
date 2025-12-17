@@ -14,7 +14,7 @@ const Home = () => {
 
     const handleOpenProjectFinder = (project) => {
         setActiveLocation(project)
-        openWindow(project);
+        openWindow("finder");
     }
 
     useGSAP(() => {
