@@ -1,9 +1,16 @@
 import React from 'react'
 import { locations } from '../constants/data'
+import { useGSAP } from '@gsap/react'
+import { Draggable } from 'gsap/Draggable'
 
 const projects = locations.work?.children ?? []
 
 const Home = () => {
+
+    useGSAP(() => {
+        Draggable.create(".folder");
+    }, [])
+
     return (
         <section id='home'>
             <ul>
