@@ -8,7 +8,9 @@ const projects = locations.work?.children ?? []
 const Home = () => {
 
     useGSAP(() => {
-        Draggable.create(".folder");
+        Draggable.create(".folder", {
+            cursor: "default",
+        });
     }, [])
 
     return (
